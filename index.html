@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Lens Gallery | Fine Art Photography</title>
+    <meta name="description" content="Elegant photography portfolio showcasing portrait, landscape and artistic works with purchase options">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        .masonry {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .masonry { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .masonry { column-count: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .masonry-item:hover img {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-serif font-semibold text-gray-900 hover:text-gold transition-colors">
+                Golden Lens
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="/" class="font-medium text-gray-900 hover:text-gold transition-colors">Home</a>
+                <a href="/galleries" class="font-medium text-gray-600 hover:text-gold transition-colors">Galleries</a>
+                <a href="/about" class="font-medium text-gray-600 hover:text-gold transition-colors">About</a>
+                <a href="/pricing" class="font-medium text-gray-600 hover:text-gold transition-colors">Pricing</a>
+                <a href="/contact" class="font-medium text-gray-600 hover:text-gold transition-colors">Contact</a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gold">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="/" class="font-medium text-gray-900 hover:text-gold transition-colors">Home</a>
+                <a href="/galleries" class="font-medium text-gray-600 hover:text-gold transition-colors">Galleries</a>
+                <a href="/about" class="font-medium text-gray-600 hover:text-gold transition-colors">About</a>
+                <a href="/pricing" class="font-medium text-gray-600 hover:text-gold transition-colors">Pricing</a>
+                <a href="/contact" class="font-medium text-gray-600 hover:text-gold transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen-80 flex items-center justify-center bg-gray-50 overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <img src="http://static.photos/nature/1200x630/42" alt="Hero image" class="absolute w-full h-full object-cover">
+        
+        <div class="relative z-10 text-center px-4 max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Capturing Moments, Creating Art</h1>
+            <p class="text-xl text-white mb-8">Fine art photography for collectors and enthusiasts</p>
+            <a href="/galleries" class="inline-block px-8 py-3 bg-gold text-white font-medium rounded hover:bg-opacity-90 transition-colors">
+                View Galleries
+            </a>
+        </div>
+    </header>
+
+    <!-- Featured Collections -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-serif font-bold text-center mb-12">Featured Collections</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="/galleries/portrait" class="group">
+                    <div class="relative overflow-hidden rounded-lg aspect-square">
+                        <img src="http://static.photos/people/640x360/1" alt="Portrait collection" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-2xl font-serif font-bold text-white">Portraits</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/galleries/landscape" class="group">
+                    <div class="relative overflow-hidden rounded-lg aspect-square">
+                        <img src="http://static.photos/nature/640x360/2" alt="Landscape collection" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-2xl font-serif font-bold text-white">Landscapes</h3>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/galleries/artistic" class="group">
+                    <div class="relative overflow-hidden rounded-lg aspect-square">
+                        <img src="http://static.photos/abstract/640x360/3" alt="Artistic collection" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <h3 class="text-2xl font-serif font-bold text-white">Artistic</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Work -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-serif font-bold text-center mb-12">Recent Work</h2>
+            
+            <div class="masonry">
+                <!-- Masonry items will be loaded here -->
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="1" data-title="Morning Mist" data-category="Landscape" data-price="450">
+                        <img src="http://static.photos/nature/320x240/4" alt="Morning Mist" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="2" data-title="Urban Portrait" data-category="Portrait" data-price="350">
+                        <img src="http://static.photos/people/320x240/5" alt="Urban Portrait" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="3" data-title="Abstract Thoughts" data-category="Artistic" data-price="550">
+                        <img src="http://static.photos/abstract/320x240/6" alt="Abstract Thoughts" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="4" data-title="Golden Hour" data-category="Landscape" data-price="400">
+                        <img src="http://static.photos/nature/320x240/7" alt="Golden Hour" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="5" data-title="Dancer's Pose" data-category="Burlesque" data-price="600">
+                        <img src="http://static.photos/people/320x240/8" alt="Dancer's Pose" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+                <div class="masonry-item">
+                    <a href="#" class="block overflow-hidden rounded-lg" data-lightbox="6" data-title="Silhouette" data-category="Portrait" data-price="300">
+                        <img src="http://static.photos/people/320x240/9" alt="Silhouette" loading="lazy" class="w-full h-auto">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="/galleries" class="inline-block px-8 py-3 border border-gray-800 text-gray-800 font-medium rounded hover:bg-gray-800 hover:text-white transition-colors">
+                    View All Collections
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="http://static.photos/people/640x360/10" alt="Photographer" class="w-full h-auto rounded-lg shadow-md">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-serif font-bold mb-6">About the Artist</h2>
+                    <p class="text-gray-600 mb-4">
+                        With over a decade of experience in fine art photography, I specialize in creating evocative images that tell stories and capture emotions. My work has been exhibited in galleries across the country and collected by art enthusiasts worldwide.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Each photograph is carefully crafted, from the initial concept to the final print, ensuring the highest quality for collectors and art lovers.
+                    </p>
+                    <a href="/about" class="text-gold font-medium hover:underline">Read more about my journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-gray-900 text-white">
+        <div class="container mx-auto text-center max-w-3xl">
+            <h2 class="text-3xl font-serif font-bold mb-6">Interested in Owning a Piece?</h2>
+            <p class="text-gray-300 mb-8 text-xl">
+                Each photograph is available as a limited edition print, signed and numbered by the artist.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/pricing" class="inline-block px-8 py-3 bg-gold text-white font-medium rounded hover:bg-opacity-90 transition-colors">
+                    View Pricing
+                </a>
+                <a href="/contact" class="inline-block px-8 py-3 border border-white text-white font-medium rounded hover:bg-white hover:text-gray-900 transition-colors">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <a href="/" class="text-2xl font-serif font-semibold text-gray-900 hover:text-gold transition-colors">
+                        Golden Lens
+                    </a>
+                    <p class="text-gray-600 mt-2 max-w-xs">
+                        Fine art photography capturing the beauty of moments and emotions.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="font-serif font-bold text-gray-900 mb-4">Explore</h3>
+                        <ul class="space-y-2">
+                            <li><a href="/" class="text-gray-600 hover:text-gold transition-colors">Home</a></li>
+                            <li><a href="/galleries" class="text-gray-600 hover:text-gold transition-colors">Galleries</a></li>
+                            <li><a href="/about" class="text-gray-600 hover:text-gold transition-colors">About</a></li>
+                            <li><a href="/pricing" class="text-gray-600 hover:text-gold transition-colors">Pricing</a></li>
+                            <li><a href="/contact" class="text-gray-600 hover:text-gold transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-serif font-bold text-gray-900 mb-4">Connect</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Instagram</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Twitter</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Facebook</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-serif font-bold text-gray-900 mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gold transition-colors">Shipping Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Golden Lens Gallery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-90 p-4">
+        <div class="relative max-w-6xl w-full max-h-screen">
+            <button id="close-lightbox" class="absolute top-4 right-4 text-white text-3xl z-50">
+                <i data-feather="x"></i>
+            </button>
+            
+            <div class="flex flex-col lg:flex-row bg-white rounded-lg overflow-hidden h-full">
+                <div class="lg:w-2/3 h-96 lg:h-auto">
+                    <img id="lightbox-image" src="" alt="" class="w-full h-full object-contain">
+                </div>
+                
+                <div class="lg:w-1/3 p-8 overflow-y-auto">
+                    <h2 id="lightbox-title" class="text-2xl font-serif font-bold mb-2"></h2>
+                    <p id="lightbox-category" class="text-gray-600 mb-4"></p>
+                    <p id="lightbox-price" class="text-xl font-medium text-gold mb-6"></p>
+                    
+                    <div class="prose mb-8">
+                        <p id="lightbox-description">This photograph is available as a limited edition print. Each piece is signed and numbered by the artist.</p>
+                    </div>
+                    
+                    <h3 class="font-serif font-bold text-lg mb-4">Request Purchase</h3>
+                    <form id="purchase-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone (optional)</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (optional)</label>
+                            <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gold text-white py-2 px-4 rounded hover:bg-opacity-90 transition-colors">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Lightbox functionality
+        document.querySelectorAll('[data-lightbox]').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const lightbox = document.getElementById('lightbox');
+                const imgSrc = this.querySelector('img').src;
+                const title = this.getAttribute('data-title');
+                const category = this.getAttribute('data-category');
+                const price = `$${this.getAttribute('data-price')}`;
+                
+                document.getElementById('lightbox-image').src = imgSrc;
+                document.getElementById('lightbox-title').textContent = title;
+                document.getElementById('lightbox-category').textContent = category;
+                document.getElementById('lightbox-price').textContent = price;
+                
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        document.getElementById('close-lightbox').addEventListener('click', function() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+        
+        // Close lightbox when clicking outside
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('purchase-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your purchase request! We will contact you shortly with payment details.');
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = '';
+            this.reset();
+        });
+        
+        // Lazy loading
+        if ('loading' in HTMLImageElement.prototype) {
+            // Native lazy loading supported
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            lazyImages.forEach(img => {
+                img.src = img.dataset.src;
+            });
+        } else {
+            // Fallback for browsers without native lazy loading
+            const lazyLoad = function() {
+                const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+                
+                lazyImages.forEach(img => {
+                    if (img.getBoundingClientRect().top < window.innerHeight + 100) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('loading');
+                    }
+                });
+            };
+            
+            document.addEventListener('scroll', lazyLoad);
+            window.addEventListener('resize', lazyLoad);
+            window.addEventListener('orientationchange', lazyLoad);
+            lazyLoad(); // Initial check
+        }
+    </script>
+</body>
+</html>
